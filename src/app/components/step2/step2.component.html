@@ -1,0 +1,54 @@
+<div class="step2">
+  <h1>Step 2: Select your config and options</h1>
+
+  <form>
+    <mat-form-field>
+      <mat-label>Config</mat-label>
+      <select
+        matNativeControl
+        id="configSelect"
+        name="config"
+        [(ngModel)]="selectedConfigId"
+        required
+        (change)="onConfigChange()"
+      >
+        @for (config of option?.configs; track config.id) {
+        <option [value]="config.id">
+          {{ config.description }}
+        </option>
+        }
+      </select>
+    </mat-form-field>
+
+    <br />
+
+    @if (selectedConfig) {
+    <p>
+      Range: {{ selectedConfig.range }} - Max speed:
+      {{ selectedConfig.speed }} - Costs:
+      {{ selectedConfig.price | currency : "USD" }}
+    </p>
+    } @if (option?.towHitch) {
+
+    <mat-checkbox
+      id="includeTow"
+      [(ngModel)]="includeTow"
+      color="primary"
+      name="towHitch"
+      (change)="onIncludeTowChange($event.checked)"
+      >Tow Hitch?</mat-checkbox
+    >
+    <br />
+    } @if (option?.yoke) {
+    <mat-checkbox
+      id="includeYoke"
+      [(ngModel)]="includeYoke"
+      color="primary"
+      name="yoke"
+      (change)="onIncludeYokeChange($event.checked)"
+      >Yoke steering wheel?</mat-checkbox
+    >
+    <br />
+    }
+  </form>
+</div>
