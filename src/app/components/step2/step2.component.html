@@ -29,25 +29,23 @@
       {{ selectedConfig.price | currency : "USD" }}
     </p>
     } @if (option?.towHitch) {
-
-    <mat-checkbox
-      id="includeTow"
-      [(ngModel)]="includeTow"
-      color="primary"
+    <input
+      type="checkbox"
       name="towHitch"
-      (change)="onIncludeTowChange($event.checked)"
-      >Tow Hitch?</mat-checkbox
-    >
+      [(ngModel)]="includeTow"
+      (change)="onIncludeTowChange()"
+    />
+    <label>Tow Hitch?</label>
     <br />
     } @if (option?.yoke) {
-    <mat-checkbox
+    <input
+      type="checkbox"
       id="includeYoke"
       [(ngModel)]="includeYoke"
-      color="primary"
+      (change)="onIncludeYokeChange()"
       name="yoke"
-      (change)="onIncludeYokeChange($event.checked)"
-      >Yoke steering wheel?</mat-checkbox
-    >
+    />
+    <label>Yoke steering wheel?</label>
     <br />
     }
   </form>

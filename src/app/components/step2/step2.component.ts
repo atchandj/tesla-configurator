@@ -3,8 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { map, mergeMap, take, throwError } from 'rxjs';
+import { mergeMap, take, throwError } from 'rxjs';
 import { TeslaCar } from '../../models/tesla-car.model';
 import { TeslaCarService } from '../../services/tesla-car.service';
 import { TeslaOption } from '../../models/tesla-option.model';
@@ -19,7 +18,6 @@ import { CurrencyPipe, NgIf } from '@angular/common';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatCheckboxModule,
     NgIf,
     FormsModule,
     CurrencyPipe,
@@ -76,16 +74,16 @@ export class Step2Component implements OnInit {
     }
   }
 
-  onIncludeYokeChange(yoke: boolean): void {
+  onIncludeYokeChange(): void {
     if (this.teslaCar) {
-      this.teslaCar.yoke = yoke;
+      this.teslaCar.yoke = this.includeYoke;
       this.teslaCarService.selectCar(this.teslaCar);
     }
   }
 
-  onIncludeTowChange(towHitch: boolean): void {
+  onIncludeTowChange(): void {
     if (this.teslaCar) {
-      this.teslaCar.towHitch = towHitch;
+      this.teslaCar.towHitch = this.includeTow;
       this.teslaCarService.selectCar(this.teslaCar);
     }
   }
