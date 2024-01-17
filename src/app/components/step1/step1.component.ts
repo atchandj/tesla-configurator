@@ -56,7 +56,7 @@ export class Step1Component implements OnInit {
     return this.models.find((m) => m.code === code);
   }
 
-  onModelChange() {
+  onModelChange(): void {
     this.selectedModel = this.models.find(
       (m) => m.code === this.selectedModelCode
     );
@@ -70,15 +70,11 @@ export class Step1Component implements OnInit {
     }
   }
 
-  onColorChange() {
+  onColorChange(): void {
     let teslaCar: TeslaCar | null = this.teslaCarService.getCurrentCar();
     if (teslaCar) {
       teslaCar.color = this.selectedColor;
       this.teslaCarService.selectCar(teslaCar);
     }
-  }
-
-  getImageSrc(): string {
-    return `https://interstate21.com/tesla-app/images/${this.selectedModelCode}/${this.selectedColor}.jpg`;
   }
 }
