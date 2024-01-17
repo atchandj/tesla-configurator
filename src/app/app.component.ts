@@ -29,7 +29,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.currentCarSubscription = this.teslaCarService
       .getCurrentCarAsObservable()
       .subscribe((teslaCar: TeslaCar | null) => {
-        console.log(teslaCar);
         this.currentCar = teslaCar;
       });
   }
